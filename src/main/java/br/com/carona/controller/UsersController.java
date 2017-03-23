@@ -1,4 +1,5 @@
 package br.com.carona.controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,12 +34,26 @@ public class UsersController {
 	}
 	
 	@JsonView(View.Summary.class)
-	@RequestMapping(value="add",method = RequestMethod.POST)
-	public Message<?> create(User user){
+	@RequestMapping(value="add",method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Message<?> create(@RequestBody User user){
 			
 		return new Message("200","success",null);
 		
 	}
 	
+	@JsonView(View.Summary.class)
+	@RequestMapping(value="edit",method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Message<?> edit(@RequestBody User user){
+			
+		return new Message("200","success",null);
+		
+	}
 	
+	@JsonView(View.Summary.class)
+	@RequestMapping(value="delete",method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public Message<?> delete(@RequestBody User user){
+			
+		return new Message("200","success",null);
+		
+	}
 }
